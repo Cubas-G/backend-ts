@@ -16,7 +16,7 @@ const router = (app: Express) => {
     appRouter.post("/products", async (req: Request, res: Response, next: NextFunction) => {
         try {
             const product = await controller.store(req.body)
-            res.json(product);
+            res.status(201).json(product);
         } catch (error) {
             res.json({
                 message: error

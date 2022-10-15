@@ -2,7 +2,11 @@ import express, { Express, Request, Response, NextFunction } from "express";
 import { ulid } from "ulid";
 import cors from 'cors';
 import appRouter from './router'
-import { products } from './db';
+import { connectDB } from './db';
+
+import { Product } from './products/models';
+
+connectDB();
 
 const app: Express = express();
 
