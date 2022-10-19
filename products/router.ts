@@ -4,12 +4,12 @@ import controller from './controller';
 const router = Router();
 
 
-router.get("/products", async (req: Request, res: Response, next: NextFunction) => {
+router.get("/", async (req: Request, res: Response, next: NextFunction) => {
     const productos = await controller.list();
     res.json(productos);
 });
 
-router.post("/products", async (req: Request, res: Response, next: NextFunction) => {
+router.post("/", async (req: Request, res: Response, next: NextFunction) => {
     try {
         const product = await controller.store(req.body)
         res.status(201).json(product);
@@ -20,13 +20,13 @@ router.post("/products", async (req: Request, res: Response, next: NextFunction)
     }
 });
 
-router.get("/products/:id", async (req: Request, res: Response, next: NextFunction) => {
+router.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
     const product = await controller.getOne(id);
     res.json(product);
 });
 
-router.delete("/products/:id", (req: Request, res: Response, next: NextFunction) => {
+router.delete("/:id", (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
 
     // let myproducts = products.filter(item => item.id !== id);

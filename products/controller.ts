@@ -1,4 +1,3 @@
-import { ulid } from 'ulid';
 import { products } from '../db'
 import repository from './repository';
 
