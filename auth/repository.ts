@@ -22,8 +22,23 @@ const findUserByUserName = async (username: string) => {
 }
 
 
+const storeUserToken = async (username: string, token: string) => {
+
+    const user = await findUserByUserName(username);
+
+    if (user) {
+        user.token = token;
+
+        await user.save();
+    }
+
+    return user;
+}
+
+
 
 export default {
     register,
     findUserByUserName,
+    storeUserToken,
 }

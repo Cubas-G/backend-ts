@@ -1,5 +1,6 @@
 export default {
     appPort: process.env.APP_PORT || 3000,
+    secret: process.env.SECRET || 'secret',
     db: {
         // si la conexion es segura faltaria agregar una contraseña
         host: process.env.DB_HOST || 'localhost',

@@ -1,4 +1,6 @@
 import bcryp from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import config from '../config';
 import { AuthException } from './exceptions';
 import { User, UserLogin } from './interfaces';
 import repository from './repository';
@@ -20,9 +22,18 @@ const login = async (data: UserLogin) => {
 
     if (!passwordIsValid) throw new AuthException('Invalid credentials');
 
-    // TODO: Generate token
+    const token = generateToken(data);
+    await repository.storeUserToken(data.username, token);
+
+    user.token = token;
 
     return user;
+}
+
+const generateToken = (user: UserLogin) => {
+    return jwt.sign({ id: user.id }, config.secret, {
+        expiresIn: 86400
+    });
 }
 
 
