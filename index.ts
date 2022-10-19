@@ -1,10 +1,8 @@
 import express, { Express, Request, Response, NextFunction } from "express";
-import { ulid } from "ulid";
 import cors from 'cors';
 import appRouter from './router'
 import { connectDB } from './db';
-
-import { Product } from './products/models';
+import config from "./config";
 
 connectDB();
 
@@ -15,4 +13,4 @@ app.use(cors());
 
 appRouter(app);
 
-app.listen(3000, () => console.log("app is running on http://localhost:3000"));
+app.listen(config.appPort, () => console.log(`app is running on http://localhost:${config.appPort}`));
