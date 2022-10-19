@@ -4,7 +4,7 @@ import { Product as IProduct } from './interfaces';
 
 
 const list = async () => {
-    return [];
+    return await Product.find();
 }
 
 const store = async (data: IProduct) => {
@@ -17,8 +17,8 @@ const store = async (data: IProduct) => {
     return product;
 }
 
-const getOne = async () => {
-    return {};
+const getOne = async (id: string) => {
+    return await Product.findOne({ id });
 }
 
 const destroy = async () => {

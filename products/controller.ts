@@ -11,8 +11,11 @@ const store = async (data: any) => {
     return product;
 }
 
-const getOne = async (id: String) => {
-    return products.find(item => item.id === id);
+const getOne = async (id: string) => {
+    const product = await repository.getOne(id);
+    if (!product) throw new Error("Product not found");
+
+    return product;
 }
 
 
