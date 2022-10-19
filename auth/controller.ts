@@ -22,7 +22,7 @@ const login = async (data: UserLogin) => {
 
     if (!passwordIsValid) throw new AuthException('Invalid credentials');
 
-    const token = generateToken(data);
+    const token = generateToken(user);
     await repository.storeUserToken(data.username, token);
 
     user.token = token;
@@ -30,9 +30,9 @@ const login = async (data: UserLogin) => {
     return user;
 }
 
-const generateToken = (user: UserLogin) => {
+const generateToken = (user: any) => {
     return jwt.sign({ id: user.id }, config.secret, {
-        expiresIn: 86400
+        expiresIn: 60
     });
 }
 

@@ -22,6 +22,13 @@ const findUserByUserName = async (username: string) => {
 }
 
 
+const findUserById = async (id: string) => {
+    const user = await User.findOne({ id });
+
+    return user;
+}
+
+
 const storeUserToken = async (username: string, token: string) => {
 
     const user = await findUserByUserName(username);
@@ -41,4 +48,5 @@ export default {
     register,
     findUserByUserName,
     storeUserToken,
+    findUserById,
 }
