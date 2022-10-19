@@ -6,7 +6,7 @@ import { Product as IProduct } from './interfaces';
 export let products = [
     {
         id: ulid(),
-        name: "computadora",
+        name: "computadorass",
         price: 1000
     },
     {
