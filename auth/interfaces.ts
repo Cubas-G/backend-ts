@@ -3,6 +3,7 @@ export interface User {
     name: string
     username: string
     password: string
+    token?: string
 }
 
 export interface UserLogin extends Omit<User, 'name'> {

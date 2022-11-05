@@ -6,8 +6,8 @@ const router = Router();
 
 router.post("/register", async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const productos = await controller.register(req.body);
-        res.json(productos);
+        const user = await controller.register(req.body);
+        res.json(user);
     } catch (error: any) {
         if (error.name === 'MongoServerError' && error.code === 11000) {
             res.status(400).json({
@@ -25,8 +25,8 @@ router.post("/register", async (req: Request, res: Response, next: NextFunction)
 
 router.post("/login", async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const productos = await controller.login(req.body);
-        res.json(productos);
+        const user = await controller.login(req.body);
+        res.json(user);
     } catch (error: any) {
         res.status(400).json({
             message: `${error.name}: ${error.message}`

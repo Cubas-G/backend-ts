@@ -10,7 +10,7 @@ router.get("/", requireAuth, async (req: Request, res: Response, next: NextFunct
     res.json(productos);
 });
 
-router.post("/", async (req: Request, res: Response, next: NextFunction) => {
+router.post("/", requireAuth, async (req: Request, res: Response, next: NextFunction) => {
     try {
         const product = await controller.store(req.body)
         res.status(201).json(product);
@@ -33,7 +33,7 @@ router.get("/:id", requireAuth, async (req: Request, res: Response, next: NextFu
     }
 });
 
-router.delete("/:id", (req: Request, res: Response, next: NextFunction) => {
+router.delete("/:id", requireAuth, (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
 
     // let myproducts = products.filter(item => item.id !== id);
@@ -41,4 +41,4 @@ router.delete("/:id", (req: Request, res: Response, next: NextFunction) => {
 });
 
 
-export default router; 
+export default router;
