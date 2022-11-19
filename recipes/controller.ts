@@ -2,8 +2,19 @@ import { Recipe } from './interfaces';
 import repository from './repositry';
 import validations from './validations';
 
-const list = async () => {
-    return await repository.list();
+const list = async (query: any) => {
+    const list = await repository.list(query);
+
+    const data = {
+        data: list,
+        pagination: {
+            nextPage: 2,
+            currentPage: 1,
+            perPage: 20
+        }
+    };
+
+    return data;
 }
 
 

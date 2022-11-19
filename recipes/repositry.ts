@@ -2,14 +2,14 @@ import { ulid } from 'ulid';
 import { Recipe } from './models';
 import { Recipe as IRecipe } from './interfaces';
 
-const list = async () => {
-    return await Recipe.find();
+const list = async ({ trending = true, popular = true }: any) => {
+    return await Recipe.find({ trending, popular });
 }
 
 const store = async (data: IRecipe) => {
     const id = ulid();
 
-    const model = new Recipe({ id, title: data.title, image: data.image, ingredients: data.ingredients });
+    const model = new Recipe({ ...data, id });
 
     await model.save();
 

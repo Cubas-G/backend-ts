@@ -4,10 +4,10 @@ import config from '../config';
 import { AuthException } from './exceptions';
 import repository from './repository';
 
-const requireAuth = (req: Request, res: Response, next: NextFunction) => {
+const requireAuth = async (req: Request, res: Response, next: NextFunction) => {
     try {
         validateHeader(req);
-        validateToken(req);
+        await validateToken(req);
 
     } catch (error: any) {
         res.status(401).json({
@@ -24,7 +24,7 @@ const validateHeader = (req: Request) => {
     }
 };
 
-const validateToken = (req: Request) => {
+const validateToken = async (req: Request) => {
     const token = req.headers?.authorization?.split(' ')[1];
 
     if (!token) throw new AuthException('Missing token');
@@ -32,7 +32,8 @@ const validateToken = (req: Request) => {
     const decodedToken = jwt.verify(token, config.secret);
 
     if (typeof decodedToken == 'object') {
-        const user = repository.findUserById(decodedToken.id);
+        const user = await repository.findUserById(decodedToken.id);
+        req.body.user = user
     }
 };
 

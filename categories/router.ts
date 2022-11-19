@@ -7,7 +7,14 @@ const router = Router();
 
 router.get("/", requireAuth, async (req: Request, res: Response, next: NextFunction) => {
     const list = await controller.list();
-    res.json(list);
+    res.json({
+        data: list,
+        metadata: {
+            nextPage: 2,
+            currentPage: 1,
+            perPage: 10
+        }
+    });
 });
 
 router.post("/", requireAuth, async (req: Request, res: Response, next: NextFunction) => {

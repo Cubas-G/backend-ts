@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema<IUser>({
         unique: true
     },
     password: String,
-    token: String
+    token: String,
+    profile_id: String
 });
 
 export const User = mongoose.model<IUser>('User', userSchema);

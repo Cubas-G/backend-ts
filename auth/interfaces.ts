@@ -4,6 +4,7 @@ export interface User {
     username: string
     password: string
     token?: string
+    profile_id: string
 }
 
 export interface UserLogin extends Omit<User, 'name'> {

@@ -8,7 +8,7 @@ const register = async (data: IUser) => {
     const id = ulid();
     const password = await bcryp.hash(data.password, 10);
 
-    const user = new User({ id, name: data.name, username: data.username, password });
+    const user = new User({ ...data, id, password });
 
     await user.save();
 
