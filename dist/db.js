@@ -30,7 +30,7 @@ exports.products = [
 ];
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield mongoose_1.default.connect(`mongodb://${config_1.default.db.host}:${config_1.default.db.port}/${config_1.default.db.name}`);
+        yield mongoose_1.default.connect(`mongodb+srv://${config_1.default.db.username}:${config_1.default.db.password}@${config_1.default.db.host}/test?retryWrites=true&w=majority`);
         console.log('Conected to mongodb');
     }
     catch (error) {
