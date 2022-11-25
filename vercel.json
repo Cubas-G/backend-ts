@@ -5,14 +5,14 @@
     },
     "builds": [
         {
-            "src": "dist/index.js",
+            "src": "index.js",
             "use": "@now/node"
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/dist/index.js"
+            "dest": "index.js"
         }
     ]
 }
