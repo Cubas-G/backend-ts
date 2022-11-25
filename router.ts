@@ -11,11 +11,11 @@ const router = (app: Express) => {
             message: "its working"
         });
     });
-    app.use("/auth", authRouter);
-    app.use("/products", productRouter);
-    app.use("/categories", categoriesRouter);
-    app.use("/recipes", recipesRouter);
-    app.use("/creators", creatorsRouter);
+    // app.use("/auth", authRouter);
+    // app.use("/products", productRouter);
+    // app.use("/categories", categoriesRouter);
+    // app.use("/recipes", recipesRouter);
+    // app.use("/creators", creatorsRouter);
 }
 
 export default router;
