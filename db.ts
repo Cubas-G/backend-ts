@@ -17,7 +17,7 @@ export let products = [
 
 export const connectDB = async () => {
     try {
-        await mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`);
+        await mongoose.connect(`mongodb+srv://${config.db.username}:${config.db.password}@${config.db.host}/test?retryWrites=true&w=majority`);
         console.log('Conected to mongodb');
     } catch (error) {
         console.log('error de base de datos', error);

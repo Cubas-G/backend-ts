@@ -1,7 +1,11 @@
 {
     "version": 2,
     "env": {
-        "MYSQL_HOST": "remotemysql.com"
+        "DB_HOST": "cluster0.prmja.mongodb.net",
+        "DB_PORT": "",
+        "DB_NAME": "test",
+        "DB_USER": "dsalinas",
+        "DB_PASS": "NgpE77KF3o46SOVc"
     },
     "builds": [
         {
