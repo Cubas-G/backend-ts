@@ -6,8 +6,8 @@ import repository from './repository';
 
 const requireAuth = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        // validateHeader(req);
-        // await validateToken(req);
+        validateHeader(req);
+        await validateToken(req);
 
     } catch (error: any) {
         res.status(401).json({
