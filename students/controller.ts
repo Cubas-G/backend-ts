@@ -16,10 +16,16 @@ const getOne = async (id: string) => {
 
     return student;
 }
+const deleteItem = async (id: string) => {
+    const model = await repository.getOne(id);
+    if (!model) throw new Error("Product not found");
 
+    return await repository.delete(id);
+}
 
 export default {
     list,
     store,
-    getOne
+    getOne,
+    delete: deleteItem,
 }

@@ -6,7 +6,6 @@ const list = async () => {
     return await repository.list();
 }
 
-
 const store = async (data: Category) => {
     validations.validateCategoryInput(data);
 

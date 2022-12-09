@@ -33,12 +33,30 @@ router.get("/:id", requireAuth, async (req: Request, res: Response, next: NextFu
     }
 });
 
-router.delete("/:id", requireAuth, (req: Request, res: Response, next: NextFunction) => {
+router.delete("/:id", requireAuth, async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
+    try {
+        await controller.delete(id);
+        res.status(204).json({});
+    } catch (error: any) {
+        if (error.name === 'CategoriesException') {
+            return res.status(400).json({
+                message: error.message
+            });
+        }
 
-    // let myproducts = products.filter(item => item.id !== id);
-    res.json({});
+        if (error.message === 'Product not found') {
+            return res.status(404).json({
+                message: error.message
+            });
+        }
+
+        return res.status(500).json({
+            message: error.message
+        });
+    }
 });
+
 
 
 export default router;
