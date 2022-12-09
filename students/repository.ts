@@ -15,19 +15,27 @@ const store = async (data: IStudent) => {
 
     return product;
 }
-
 const getOne = async (id: string) => {
     return await Student.findOne({ id });
 }
 
-const destroy = async () => {
-    return {};
+
+const deleteItem = async (id: string) => {
+    return await Student.deleteOne({ id });
 }
 
+
+const update = async (id: string, data: IStudent) => {
+
+    const model = await Student.findOneAndUpdate({ id }, data, { new: true });
+
+    return model;
+}
 
 export default {
     list,
     store,
     getOne,
-    delete: destroy
+    delete: deleteItem,
+    update
 }

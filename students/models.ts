@@ -7,7 +7,6 @@ const studentSchema = new mongoose.Schema({
     apellido: String,
     telefono: Number,
     descripcion: String,
-    
 });
 
 export const Student = mongoose.model('Student', studentSchema);
