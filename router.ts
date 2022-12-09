@@ -4,6 +4,7 @@ import productRouter from './products/router';
 import categoriesRouter from './categories/router';
 import recipesRouter from './recipes/router';
 import creatorsRouter from './creators/router';
+import studentRouter from './students/router'
 
 const router = (app: Express) => {
     app.get("/", (req, res) => {
@@ -16,6 +17,7 @@ const router = (app: Express) => {
     app.use("/categories", categoriesRouter);
     app.use("/recipes", recipesRouter);
     app.use("/creators", creatorsRouter);
+    app.use("/students",studentRouter)
 }
 
 export default router;
